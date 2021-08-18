@@ -61,6 +61,10 @@ public class Player : MovingAgent, IDamageble
             {
                 _doubleJumped = !isGrounded && !_doubleJumped;
                 isGrounded = false;
+                // reset Y velocity
+                var v = rb.velocity;
+                v.y = 0;
+                rb.velocity = v;
                 rb.AddForce(Vector2.up * _jumpForce);
             }
         }
